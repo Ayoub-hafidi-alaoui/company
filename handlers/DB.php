@@ -1,5 +1,6 @@
 <?php
-require_once('connect.php');
+require_once("connect.php");
+
 function getAll($table)
 {
     global $conn;
@@ -26,12 +27,14 @@ function getJoin($table1, $table2, $col,$primary_key, $foreign_key) {
 
 }
 
-function getOnes($table, $where) {
+function getOnes($table, $where=1) {
     global $conn;
     $query= "SELECT * FROM $table WHERE $where";
     $getAll = mysqli_query($conn, $query);
     $getData = mysqli_fetch_assoc($getAll);
     return $getData;
 }
+
+
 
 ?>

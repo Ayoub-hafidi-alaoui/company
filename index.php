@@ -1,21 +1,7 @@
 <?php
-require_once("./handlers/DB.php");
-$sliders = getWhere('sliders', "status='Y'");
-$clients = getWhere("clients", "status='Y'");
-$portfolios = getWhere("portfolios", "status='y'");
-$getProjects = getJoin("portfolios","projects","portfolios.id AS Portfoli_id,
-portfolios.name AS portfolio_name,
-portfolios.status AS portfolio_status,
-projects.id AS project_id,
-projects.img AS img,
-projects.name AS project_name,
-projects.status AS project_status", "id", "portfolio_id");
-$services = getWhere('services', "status='y'");
-$contact = getOnes("contacts", "status='y'");
-$socialMedias = getWhere('socialMedias', "status='y'");
-echo "<pre>";
-print_r($socialMedias);
-echo "</pre>";
+
+require("./handlers/data.php");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -158,19 +144,17 @@ echo "</pre>";
 
         <div class="row content">
           <div class="col-lg-6" data-aos="fade-right">
-            <h2>Eum ipsam laborum deleniti velitena</h2>
-            <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assum perenda sruen jonee trave</h3>
+            <h2><?= $abouts["headingOne"] ?></h2>
+            <h3><?= $abouts["headingTwo"] ?></h3>
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-left">
             <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum
+              <?= $abouts["paragraphOne"] ?>
             </p>
             <ul>
-              <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequa</li>
-              <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
-              <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in</li>
+              <?php foreach($listStringToArray as $item) { ?>
+              <li><i class="ri-check-double-line"></i> <?= $item ?></li>
+              <?php } ?>
             </ul>
             <p class="font-italic">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
